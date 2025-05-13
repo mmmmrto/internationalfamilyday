@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>International Day of Families</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Base */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      background: #fff;
+      color: #000;
+    }
+
+    /* Header */
+    header {
+      background: #f0f0f0;
+      padding: 1em;
+      position: sticky;
+      top: 0;
+    }
+
+    h1 {
+      color: #007BFF;
+      text-align: center;
+    }
+
+    /* Navigation */
+    nav {
+      text-align: center;
+      margin-top: 0.5em;
+    }
+
+    nav a {
+      margin: 0 1em;
+      color: #333;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #007BFF;
+    }
+
+    /* Sections */
+    section {
+      padding: 1.5em;
+      border-bottom: 1px solid #ddd;
+    }
+
+    h2 {
+      color: #6f42c1;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      margin-bottom: 1em;
+    }
+
+    /* Steps layout */
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+    }
+
+    .steps div {
+      flex: 1 1 200px;
+      border: 1px solid #ddd;
+      padding: 1em;
+      border-radius: 4px;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: 0.5em 1em;
+      background: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 1em;
+      border-radius: 4px;
+      max-width: 400px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      top: 0.5em;
+      right: 0.5em;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1em;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      .steps {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>International Day of Families</h1>
+    <nav>
+      <a href="#purpose">Purpose</a>
+      <a href="#date">Date</a>
+      <a href="#participate">Participate</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="purpose">
+      <h2>Purpose</h2>
+      <p>Raises awareness of the importance of families worldwide.</p>
+      <a href="#" class="btn" id="openModal">Learn More</a>
+    </section>
+
+    <section id="date">
+      <h2>Date</h2>
+      <p><strong>May 15</strong> every year.</p>
+    </section>
+
+    <section id="participate">
+      <h2>How to Participate</h2>
+      <div class="steps">
+        <div>
+          <h3>Gather</h3>
+          <p>Bring family together for a meal.</p>
+        </div>
+        <div>
+          <h3>Events</h3>
+          <p>Join local or online family workshops.</p>
+        </div>
+        <div>
+          <h3>Share</h3>
+          <p>Post family stories on social media.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>More Info</h2>
+      <p>Proclaimed by the UN in 1993 to focus on family roles.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 International Day of Families
+  </footer>
+
+  <script>
+    const modal = document.getElementById('modal');
+    document.getElementById('openModal').onclick = function(e) {
+      e.preventDefault();
+      modal.classList.add('active');
+    };
+    document.getElementById('closeModal').onclick = function() {
+      modal.classList.remove('active');
+    };
+    window.onclick = function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    };
+    document.querySelectorAll('nav a').forEach(function(link) {
+      link.onclick = function(e) {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      };
+    });
+  </script>
+</body>
+</html>
